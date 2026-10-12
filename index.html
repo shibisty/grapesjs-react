@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>grapesjs-export-jsx — dev</title>
+    <link rel="stylesheet" href="/node_modules/grapesjs/dist/css/grapes.min.css" />
+    <style>
+      body { margin: 0; }
+    </style>
+  </head>
+  <body>
+    <div id="gjs"></div>
+    <!-- `npm run dev`: the plugin from src/, grapesjs from node_modules. -->
+    <script type="module">
+      import grapesjs from 'grapesjs';
+      import exportJsx from './src/index.ts';
+
+      window.editor = grapesjs.init({
+        container: '#gjs',
+        height: '100vh',
+        storageManager: false,
+        components: `
+          <section class="hero">
+            <h1>Hello <b>React</b></h1>
+            <p>Edit the page, then press the <code>{ }</code> button in the top panel.</p>
+            <form><label for="n">Name</label> <input id="n" value="Ada"> <button type="submit">Send</button></form>
+          </section>`,
+        style: '.hero { padding: 40px; font-family: sans-serif; } .hero h1 { color: #7a3; }',
+        plugins: [exportJsx],
+        pluginsOpts: { [exportJsx]: { componentName: 'Hero', cssImport: true } },
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,58 @@
+{
+  "name": "grapesjs-export-jsx",
+  "version": "1.0.0",
+  "description": "GrapesJS plugin: export a page as a React component (JSX + CSS) — valid JSX, preserved whitespace, uncontrolled form fields, custom handlers per component type.",
+  "type": "module",
+  "main": "./dist/grapesjs-export-jsx.umd.cjs",
+  "module": "./dist/grapesjs-export-jsx.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/grapesjs-export-jsx.js",
+      "require": "./dist/grapesjs-export-jsx.umd.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && tsc -p tsconfig.json --emitDeclarationOnly",
+    "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.test.json",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "prepublishOnly": "npm run typecheck && npm test && npm run build"
+  },
+  "peerDependencies": {
+    "grapesjs": ">=0.21.0 <1.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.29.7",
+    "@babel/parser": "^7.26.0",
+    "@babel/preset-react": "^7.29.7",
+    "@types/babel__core": "^7.20.5",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "grapesjs": "0.21.13",
+    "jsdom": "^25.0.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "typescript": "5.6.3",
+    "vite": "5.4.11",
+    "vitest": "^2.1.9"
+  },
+  "keywords": [
+    "grapesjs",
+    "grapesjs-plugin",
+    "react",
+    "jsx",
+    "export",
+    "code-export"
+  ],
+  "author": "Alexander Shibisty",
+  "license": "MIT"
+}
